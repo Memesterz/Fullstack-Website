@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Message</title>
+</head>
+<body>
+    <div class="closeChat"><button onclick="window.location.href='/chats'" class="exitButton">X</button></div>
+    <div class="messageDiv">
+    <div class="messageArea">
+    <%messages.forEach(msg => {%>
+        <%if(username == msg.sender_username){%>
+            <h1><%=msg.sender_username%></h1>
+        <p><%=msg.content%></p>
+        <%}else{%>
+        <h1 class="receiver"><%=msg.sender_username%></h1>
+        <p class="receiver"><%=msg.content%></p>
+    <%}})%>
+    </div>
+    <div class="sendMessageArea">
+        <form action="/sendMessage" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="hidden" name="chatid" value="<%=chatid%>">
+        <textarea class="sendMessageInput" name="sentMessage">Send Message Here</textarea>
+        <button class="sendMessageButton">Send</button>
+        </form>
+    </div>
+    </div>
+</body>
+</html>

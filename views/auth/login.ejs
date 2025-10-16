@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Welcome to the Login Page!</h1>
+    <%-include('../partials/nav.ejs')%>
+    <%errors.forEach(err => {%>
+        <h1><%=err%></h1>
+    <%})%>
+    <form action="/login" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <ul class="list">
+            <li><label for="username">Username</label></li>
+            <li><input name="username" required autocomplete="false"></li>
+            <li><label for="password">Password</label></li>
+            <li><input name="password" required autocomplete="false"></li>
+        </ul>
+        <button>Login</button>
+    </form>
+</body>
+</html>

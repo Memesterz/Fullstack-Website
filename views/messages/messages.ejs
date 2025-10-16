@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+    <title>Messages</title>
+</head>
+<body>
+    <h1 class="title">Your Messages</h1>
+    <%-include('../partials/nav.ejs')%>
+    <h1 class="center"><a href="newMessage">New Message</a></h1>
+    <h1 class="center"><a href="messageRequest">Message Request</a></h1>
+    <%if(!chatHistory.length){%>
+        <h1>No Messages</h1>
+    <%}else{%>
+        <h1 class="title">Messages</h1>
+        <%chatHistory.forEach(chat => {%>
+        <h1 class="center"><a href="chats/<%=chat.chatid%>"><%=chat.chat_partner%></a></h1>
+    <%})}%>
+</body>
+</html>

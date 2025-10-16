@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Blog</title>
+</head>
+<body>
+    <h1 class="title">Create Blog</h1>
+    <%-include('../partials/nav.ejs')%>
+    <%errors.forEach(err => {%>
+        <h1><%=err%></h1>
+    <%})%>
+    <%if(post && post.id){%>
+        <form action="/posts/<%=post.id%>/edit" method="post">
+    <%}else{%>
+        <form action="/create" method="post">
+    <%}%>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+            <li><label for="title">Title</label></li>
+            <li><input name="title" required autocomplete="false" style="width:500px" value="<%=post.title%>"></li>
+            <li><label for="body">Body</label></li>
+            <li><textarea name="body" required autocomplete="false" style="width:500px; height:300px;"><%=post.body%></textarea></li>
+        </ul>
+        <button>Post Blog</button>
+    </form>
+</body>
+</html>

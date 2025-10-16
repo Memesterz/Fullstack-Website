@@ -1,0 +1,12 @@
+<ul>
+    <% if(user){%>
+    <li><a href="/">Homepage</a></li>
+    <li><a href="/create">Create Blog</a></li>
+    <li><a href="/chats">Messages</a></li>
+    <li><a href="/logout">Logout</a></li>
+    <%} else{%>
+    <li><a href="/">Homepage</a></li>
+    <li><a href="/register">Register Here</a></li>
+    <li><a href="/login">Login</a></li>
+    <%}%>
+</ul>

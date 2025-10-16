@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1 class="title">Welcome to the Homepage!</h1>
+    <%-include('partials/nav.ejs')%>
+    <h1 class="title">Blog Post</h1>
+    <%if(!allPosts.length){%>
+    <h1 class="title">No Post Yet</h1>
+    <%}else{%>
+    <%allPosts.forEach(post => {%>
+        <h1><a href='posts/<%=post.id%>'><%=post.title%></a></h1>
+        <h2><%=post.username%></h2>
+    <%})}%>
+</body>
+</html>

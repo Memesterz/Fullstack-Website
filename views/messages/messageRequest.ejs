@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Message Request</title>
+</head>
+<body>
+    <h1 class="title">Message Request</h1>
+    <%-include('../partials/nav.ejs')%>
+    <%if(!messageRequest.length){%>
+        <h2>No Message Request</h2>
+    <%}else{messageRequest.forEach(request => {%>
+        <h2><%=request.sender_username%></h2>
+        <p><%=request.content%></p>
+        <form action="messageRequest" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" name="confirm" value="yes">Accept</button>
+            <button type="submit" name="confirm" value="no">Deny</button>
+        </form>
+    <% })}%>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title><%=post.title%></title>
+</head>
+<body>
+    <h1 class="title"><%=post.title%></h1>
+    <%-include('../partials/nav.ejs')%>
+    <p style="font-size:20"><b>User:</b> <%=post.username%></p>
+    <p><%=post.body%></p>
+    <%if(user.userid == post.userid){%>
+        <a href='/posts/<%=post.id%>/edit'>Edit Post</a>
+        <a href='/posts/<%=post.id%>/delete'>Delete Post</a>
+    <%}%>
+</body>
+</html>
