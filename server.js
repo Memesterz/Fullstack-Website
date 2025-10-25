@@ -17,24 +17,27 @@ app.use(cookieParser())
 
 const db = require('./db')
 
-// --- Import middlewares ---
+// Middleware Handling
 const csrfMiddleware = require('./middleware/csrf')
 const authMiddleware = require('./middleware/auth')
-// --- Apply middlewares ---
+
 app.use(csrfMiddleware)
 app.use(authMiddleware)
-// --- Import routes ---
+// Route Handling
 const indexRoutes = require('./routes/indexRoutes')
 const authRoutes = require('./routes/authRoutes')
 const blogRoutes = require('./routes/blogRoutes')
 const messageRoutes = require('./routes/messageRoutes')
-// --- Use routes ---
+const searchRoutes = require('./routes/searchRoutes')
+const profileRoutes = require('./routes/profileRoutes')
+
 app.use('/', indexRoutes)
 app.use('/', authRoutes)
 app.use('/', blogRoutes)
 app.use('/', messageRoutes)
+app.use('/', searchRoutes)
+app.use('/', profileRoutes)
 
-// START SERVER
 app.listen(PORT,() => {
     console.log(`Server started listening on PORT ${PORT}`)
 })

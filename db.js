@@ -43,6 +43,13 @@ db.exec(`
     FOREIGN KEY (senderid) REFERENCES users(id),
     FOREIGN KEY (receiverid) REFERENCES users(id)
   );
+
+  CREATE TABLE IF NOT EXISTS profiles (
+  profileid INTEGER PRIMARY KEY,
+  status TEXT,
+  aboutme TEXT,
+  FOREIGN KEY (profileid) REFERENCES users(id)
+  );
 `)
 
 module.exports = db
