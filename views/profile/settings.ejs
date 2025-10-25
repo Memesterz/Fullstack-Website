@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h1>About Me</h1>
+    <ul class="list">
+        <form action="profile/edit/status" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <li><h1>Status</h1></li>
+        <li><input style="width:40%" name="status"><%=profile.status%></input><button>Update Status</button></li>
+        </form>
+        <form action="profile/edit/aboutme" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <li><h1>About Me</h1></li>
+        <li><textarea style="width: 40%;height:20%" name="aboutme"><%=profile.aboutme%></textarea></li>
+        <li><button>Update About Me</button></li>
+        </form>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1 class="title">Search</h1>
+    <%-include('../partials/nav.ejs')%>
+    <form action="search" method="GET">
+        <input type="text" name="query" placeholder="Enter username..." value="<%=query%>"></input>
+        <button type="submit">Search</button>
+    </form>
+    <% if (query && results.length > 0) { %>
+    <h2>Results for "<%= query %>"</h2>
+    <ul>
+      <% results.forEach(result => { %>
+        <li><strong><a href="/profile/<%=result.id%>"><%=result.username%></a></strong></li>
+      <% }) %>
+    </ul>
+  <% } else if (query && results.length === 0) { %>
+    <p>No results for "<%= query %>".</p>
+  <% } %>
+</body>
+</html>

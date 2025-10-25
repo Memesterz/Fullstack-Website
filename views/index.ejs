@@ -6,7 +6,11 @@
     <title>Homepage</title>
 </head>
 <body>
-    <h1 class="title">Welcome to the Homepage!</h1>
+    <%if(user){%>
+    <h1>Welcome to the Homepage, <%= user.username %>!</h1>
+    <%}else{%>
+    <h1>Welcome to the Homepage!</h1>
+    <%}%>
     <%-include('partials/nav.ejs')%>
     <h1 class="title">Blog Post</h1>
     <%if(!allPosts.length){%>
