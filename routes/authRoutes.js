@@ -87,6 +87,7 @@ router.post('/register',(req,res) => {
     // Account Creation
     const newUser = db.prepare('INSERT INTO users (username, password) VALUES (?, ?)').run(req.body.username, req.body.password)
     const user = db.prepare('SELECT users.username,users.id FROM users WHERE id = ?').get(newUser.lastInsertRowid)
+    db.prepare('INSERT INTO profiles (profileid) VALUES (?)').run(newUser.lastInsertRowid)
 
     // Cookie Handling
     const registerToken = jwt.sign(

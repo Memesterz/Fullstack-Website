@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db')
 
+const sanitizeHTML = require("sanitize-html")
+
 const blogPost = db.prepare(`
     SELECT b.*, 
     u.id as userid,
@@ -22,6 +24,11 @@ function getPost(id) {
 router.get('/posts/:id',(req,res) => {
     const post = getPost(req.params.id)
     res.render('blogs/post', { post })
+})
+
+router.use((req, res, next) => {
+  if (!req.user) return res.redirect('/')
+  next()
 })
 
 // POST DELETION SYSTEM
